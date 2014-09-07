@@ -160,7 +160,7 @@ public class SudokuBackTrack {
                 if(value != '-'){
                     Grid[GridH][GridV][0] = value;
                     //uncomment the following print to see the backtracking behaviour
-                    System.out.println("For Grid[" + GridH + "]" + "[" + GridV + "] try value: " + value);
+                    //System.out.println("For Grid[" + GridH + "]" + "[" + GridV + "] try value: " + value);
                     if(chkConflict(GridH, GridV)){
                         Grid[GridH][GridV][0] = '-'; 
                     }else{
