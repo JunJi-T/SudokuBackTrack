@@ -3,17 +3,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.*;
+
 /**
  *
  * @author JunJi
  */
+ 
 public class SudokuBackTrack {
 
     //Horizontal(Row) first then vertical(Column)
     public static char[][][] Grid;
     ArrayDeque<String> queue = new ArrayDeque<String>();
     
-    //reads a new sudoku layout and set it up in grid
+    //Reads a new sudoku layout and set it up in grid
     public void Setup(String filePath){
         
         Scanner input;
@@ -31,6 +33,7 @@ public class SudokuBackTrack {
         
         Grid = new char[9][9][10];   
         
+        //populate grid from the txt file
         for(int h = 0; h <= 8; h++){
             
             String line = input.next();
@@ -58,7 +61,7 @@ public class SudokuBackTrack {
         }
     }
     
-    //print a fancy string diagram of the sudoku.
+    //Return a fancy string diagram of the sudoku.
     public String GridToString(){
                
         String state = "+-----------------------+" + "\n";
@@ -84,17 +87,17 @@ public class SudokuBackTrack {
                 state += "|-------+-------+-------|" + "\n";
             }
         }
-        state += state = "+-----------------------+" + "\n";
+        state += "+-----------------------+" + "\n";
         
         return state;
     }
       
-    //check for any conflict in the row, column or box of this grid location(h,v)
+    //Check for any conflict in the row, column or box of this grid location(h,v)
     public boolean chkConflict(int h, int v){
 
         if(Grid[h][v][0] != '-'){
             
-        //check its horizontal(Row)
+        //check horizontal(Row)
             for(int i = 0; i <= 8; i++){
                 if(i != v){
                     if(Grid[h][i][0] == Grid[h][v][0]){
@@ -102,7 +105,7 @@ public class SudokuBackTrack {
                     }
                 }
             }
-            //check its vertical(column)
+            //check vertical(column)
             for(int i = 0; i <= 8; i++){
                 if(i != h){
                     if(Grid[i][v][0] == Grid[h][v][0]){
@@ -110,14 +113,14 @@ public class SudokuBackTrack {
                     }
                 }
             }
-            //check its 3x3 box
+            //check 3x3 box
             int boxH = ((int)Math.floor((double)h/3))*3;
             int boxV = ((int)Math.floor((double)v/3))*3;      
             
             for(int x = boxH; x <= boxH+2; x++){
                 for(int y = boxV; y <= boxV+2; y++){
                     if(x != h || y != v){
-                        if(Grid[x][y][0] == Grid [h][v][0]){
+                        if(Grid[x][y][0] == Grid[h][v][0]){
                             return true;
                         }
                     }
@@ -127,7 +130,7 @@ public class SudokuBackTrack {
         return false;
     }
     
-    //check if board if full(solved)
+    //Check if board if full(solved)
     public boolean isGridFull(){
         
         for(int x = 0; x <= 8; x++){
