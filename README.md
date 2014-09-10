@@ -1,11 +1,11 @@
 SudokuBackTrack
 ===============
 
-Java implementation of a Backtracking Sudoku Solver
+Implementation of a Backtracking Sudoku Solver
 
-----------
-How to Use
-----------
+-----------------
+How to Use (Java)
+-----------------
 
 1)Write a textfile(.txt) that contains the Sudoku like the one provided here. It has to be exactly in this format, no extra whitespaces or lines otherwise program will not work correctly.
 
@@ -14,9 +14,9 @@ How to Use
 3)Compile and run, result(if the sudoku is solved) will be printed in the terminal.
 
 
--------
-python
--------
+-------------------
+How to Use (Python)
+-------------------
 
 1)Make sure the Sudoku textfile(named SudokuFile.txt) is in the same directory
 
